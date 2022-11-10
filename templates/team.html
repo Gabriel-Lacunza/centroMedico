@@ -1,4 +1,5 @@
 {% extends "index.html" %}
+{% load static %}
 {% block content %}
 <div id="team" class="team-box">
     <div class="container">
@@ -15,7 +16,7 @@
             <div class="col-md-4 col-sm-6">
                 <div class="our-team">
                     <div class="pic">
-                        <img src="images/img-1.jpg" alt="">
+                        <img src="{% static 'images/img-1.jpg' %}" alt="">
                     </div>
                     <div class="team-content">
                         <h3 class="title">Williamson</h3>
@@ -33,7 +34,7 @@
             <div class="col-md-4 col-sm-6">
                 <div class="our-team">
                     <div class="pic">
-                        <img src="images/img-2.jpg" alt="">
+                        <img src="{% static 'images/img-2.jpg' %}" alt="">
                     </div>
                     <div class="team-content">
                         <h3 class="title">kristina</h3>
@@ -51,7 +52,7 @@
             <div class="col-md-4 col-sm-6">
                 <div class="our-team">
                     <div class="pic">
-                        <img src="images/img-3.jpg" alt="">
+                        <img src="{% static 'images/img-3.jpg' %}" alt="">
                     </div>
                     <div class="team-content">
                         <h3 class="title">Steve Thomas</h3>
