@@ -9,5 +9,7 @@ urlpatterns = [
     path("gallery", gallery, name="gallery"),
     path("", home, name="home"),
     path("services", services, name="services"),
-    path("team", team, name="team")
+    path("team", team, name="team"),
+    path("singIn", singIn, name="singIn"),
+    path("login", login, name="login")
 ]
