@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+
+<div class="contact-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <div class="contact-block">
+                    {% for i in citas %}
+                    <h1>{{i.fechaCita}}</h1>
+                    <h2>{{i.horaInicioCita}} por {{i.duracionCita}}</h2>
+                    <p>{{i.medicoCita}}</p>
+                    <br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

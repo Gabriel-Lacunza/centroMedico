@@ -1,7 +1,8 @@
 {% extends "index.html" %}
-{% load static %}
-{% block content %}
 
+{% load crispy_forms_tags %}
+
+{% block content %}
 <div class="contact-box">
     <div class="container">
         <div class="row">
@@ -9,10 +10,10 @@
                 <div class="contact-block">
                     <form action="" method="post">
                         {% csrf_token %}
-                        {{registro.as_p}}
+                        {{form|crispy}}
                         <div class="col-mid-12">
                             <div class="submit-button text-center">
-                                <button type="submit" class="btn btn-common">Ingresar</button>
+                                <button type="submit" class="btn btn-common">Registrarse</button>
                                 <div class="h3 text-center hidden"></div>
                                 <div class="clearfix"></div>
                             </div>
@@ -23,5 +24,5 @@
         </div>
     </div>
 </div>
-
 {% endblock %}
+<!--|crispy-->

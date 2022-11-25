@@ -50,14 +50,15 @@
                             <li><a class="nav-link active" href={% url "home" %}>Inicio</a></li>
                             <li><a class="nav-link" href={% url "about" %}>Sobre nosotros</a></li>
                             <li><a class="nav-link" href={% url "services" %}>Servicios</a></li>
-                            <li><a class="nav-link" href={% url "appointment" %}>Citas</a></li>
                             <li><a class="nav-link" href={% url "gallery" %}>Galería</a></li>
                             <li><a class="nav-link" href={% url "team" %}>Doctores</a></li>
                             <li><a class="nav-link" href={% url "blog" %}>Blog</a></li>
                             <li><a class="nav-link" href={% url "contact" %}>Contactanos</a></li>
-                            {% if opt == True %}
                                 <li><a class="nav-link" href={% url "login" %}>Ingresar</a></li>
-                            {% endif %}
+                                <li><a class="nav-link" href={% url "register" %}>Registrar</a></li>
+                                <li><a class="nav-link" href={% url "appointment" %}>Programar citas</a></li>
+                                <li><a class="nav-link" href={% url "citas" %}>Mirar citas</a></li>
+                                <li><a class="nav-link" href={% url "cerrar" %}>Cerrar sesion</a></li>
                         </ul>
                     </div>
                 </div>
@@ -72,7 +73,7 @@
                         <div class="subscribe-inner text-center clearfix">
                             <h2>Suscribete</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <h2><a href={% url "singIn" %}>Registrate</a></h2>
+                            <h2><a href={% url "register" %}>Registrate</a></h2>
                         </div>
                     </div>
                 </div>

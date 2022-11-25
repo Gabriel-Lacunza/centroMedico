@@ -10,6 +10,7 @@ urlpatterns = [
     path("", home, name="home"),
     path("services", services, name="services"),
     path("team", team, name="team"),
-    path("singIn", singIn, name="singIn"),
-    path("login", login, name="login")
+    #path("login", login, name="login"),
+    path("citas", citas, name="citas"),
+    path("cerrar", cerrar_sesion, name="cerrar")
 ]

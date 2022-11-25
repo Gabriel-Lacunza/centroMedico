@@ -5,6 +5,13 @@ from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+class TimeInput(forms.TimeInput):
+    input_type = 'time'
+
 class registroUsuarioForm(UserCreationForm):
     rut = forms.IntegerField(max_value=10000000, min_value=99999999)
     dv = forms.CharField(max_length=1)
@@ -33,7 +40,6 @@ class loginForm(Form):
         fields = ["nombreDeUsuario", "passwordUsuario"]
 
 class registroCitaForm(ModelForm):
-    fechaCita = forms.DateField(widget=forms.SelectDateWidget, label="fecha de la cita")
     class Meta:
         model = Cita
         fields = [
@@ -42,6 +48,10 @@ class registroCitaForm(ModelForm):
             "duracionCita",
             "medicoCita"
         ]
+        widgets = {
+            'fechaCita': DateInput(),
+            'horaInicioCita': TimeInput()
+        }
 
 class modificacionUsuarioForm(UserCreationForm):
     nombre = forms.CharField(max_length=30, min_length=5)

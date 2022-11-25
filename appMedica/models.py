@@ -44,45 +44,9 @@ class Medico(models.Model):
         return f"{self.nombreUsuario} {self.apellidoUsuario} ({self.rutUsuario}-{self.dvUsuario})"
 
 class Cita(models.Model):
-    #medicos = ((i["nombreUsuario"], f'{i["nombreUsuario"]}') for i in Perfil.objects.filter(rolUsuario = "Médico").values())
-    horas = (
-        ("0", "seleccione una opción"),
-        ("1", "0:00"),
-        ("2", "1:00"),
-        ("3", "2:00"),
-        ("4", "3:00"),
-        ("5", "4:00"),
-        ("6", "5:00"),
-        ("7", "6:00"),
-        ("8", "7:00"),
-        ("9", "8:00"),
-        ("10", "9:00"),
-        ("11", "10:00"),
-        ("12", "11:00"),
-        ("13", "12:00"),
-        ("14", "13:00"),
-        ("15", "14:00"),
-        ("16", "15:00"),
-        ("17", "16:00"),
-        ("18", "17:00"),
-        ("19", "18:00"),
-        ("20", "19:00"),
-        ("21", "20:00"),
-        ("22", "21:00"),
-        ("23", "22:00"),
-        ("24", "23:00"),
-    )
-    duraciones = (
-        ("0", "seleccione una opción"),
-        ("1", "15 minutos"),
-        ("2", "30 minutos"),
-        ("3", "45 minutos"),
-        ("4", "60 minutos"),
-    )
-    '''choices= medicos, default=None, .objects.filter(rolUsuario="Médico")'''
     fechaCita = models.DateTimeField(verbose_name="fecha de la cita")
-    horaInicioCita = models.TimeField(choices=horas, default=0, verbose_name="hora de la cita")
-    duracionCita = models.IntegerField(choices=duraciones, default=0, verbose_name="duracion aproximada de la cita")
+    horaInicioCita = models.TimeField(default=0, verbose_name="hora de la cita")
+    duracionCita = models.IntegerField(default=0, verbose_name="duracion aproximada de la cita")
     pacienteCita = models.ForeignKey(Perfil, on_delete=models.DO_NOTHING, related_name="pacienteCita")
     medicoCita = models.ForeignKey(Medico, on_delete=models.DO_NOTHING, related_name="medicoCita", verbose_name="médico para la cita")
 
