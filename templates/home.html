@@ -1,5 +1,6 @@
 {% extends "index.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block content %}
 <div class="ulockd-home-slider">
     <div class="container-fluid">
@@ -9,7 +10,7 @@
                     <div class="lbox-caption pogoSlider-slide-element">
                         <div class="lbox-details">
                             <h1>Bienvenido al Centro Médico Galenos</h1>
-                            <p>Fusce convallis ante id purus sagittis malesuada. Sed erat ipsum </p>
+                            <p>Donde todo nuestro equipo está disponible para usted</p>
                             <a href="#" class="btn">Contact Us</a>
                         </div>
                     </div>
@@ -18,20 +19,10 @@
                     <div class="lbox-caption pogoSlider-slide-element">
                         <div class="lbox-details">
                             <h1>Expertos en el área de la salud</h1>
-                            <p>Fusce convallis ante id purus sagittis malesuada. Sed erat ipsum</p>
+                            <p>con un equipo de trabajo y trabajadores profesionales</p>
                             <a href={% url "appointment" %} class="btn">Appointment</a>
                         </div>
                     </div>
-                </div>
-                <div class="pogoSlider-slide" data-transition="fade" data-duration="1500" style="background-image:url(images/slider-03.jpg);">
-                    <div class="lbox-caption pogoSlider-slide-element">
-                        <div class="lbox-details">
-                            <h1>Bienvenido al Centro Médico Galenos</h1>
-                            <p>Fusce convallis ante id purus sagittis malesuada. Sed erat ipsum </p>
-                            <a href="#" class="btn">Contactanos</a>
-                        </div>
-                    </div>
-                    
                 </div>
             </div><!-- .pogoSlider -->
         </div>
@@ -45,7 +36,7 @@
             <div class="col-lg-12">
                 <div class="title-box">
                     <h2>Contactanos</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                    <p>Centro médico Galenos estamos atentos a cualquier mensaje que el paciente desee darnos</p>
                 </div>
             </div>
         </div>
@@ -56,7 +47,10 @@
                 <form id="contactForm" method="post">
                   <div class="row">
                     {% csrf_token %}
-                    {{msj.as_p}}
+                    <div class="col-lg-4 col-xs-4"></div>
+                    <div class="col-lg-4 col-xs-4">{{msj|crispy}}</div>
+                    <div class="col-lg-4 col-xs-4"></div>
+                    
                     <div class="col-md-12">
                         <div class="submit-button text-center">
                             <button class="btn btn-common" id="submit" type="submit">Contactanos</button>

@@ -10,6 +10,7 @@ class registroUsuarioForm(UserCreationForm):
     direccion = forms.CharField(max_length=30, min_length=10)
     celular = forms.IntegerField(max_value=10000000000, min_value=99999999999, label="telefono celular (con codigo de área)")
     email = forms.EmailField(max_length=40)
+
     class Meta:
         model = User 
         fields = [
@@ -19,5 +20,5 @@ class registroUsuarioForm(UserCreationForm):
             "apellido",
             "direccion",
             "celular",
-            "email"
+            "email",
         ]

@@ -1,4 +1,5 @@
 {% extends "index.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 
 <div id="appointment" class="appointment-main">
@@ -7,7 +8,7 @@
             <div class="col-lg-12">
                 <div class="title-box">
                     <h2>Citas</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                    <p>Progreme una cita medica con nuestro equipo </p>
                 </div>
             </div>
         </div>
@@ -21,7 +22,7 @@
                         <!-- Form start -->
                         <div class="row">
                             {% csrf_token %} 
-                            {{ citas.as_p }}
+                            {{ citas|crispy }}
                             <!-- Button -->
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -43,19 +44,19 @@
                         <div class="feature feature-blurb-text">
                             <h4 class="feature-title">Disponibilidad 24/7</h4>
                             <div class="feature-content">
-                                <p>Integer nec nisi sed mi hendrerit mattis. Vestibulum mi nunc, ultricies quis vehicula et, iaculis in magnestibulum.</p>
+                                <p>En el centro médico Galenos poseemos un portal en el que nuestros pacientes posdrán pedir citas médicas y ser atendidos por un medico en todo momento</p>
                             </div>
                         </div>
                         <div class="feature feature-blurb-text">
                             <h4 class="feature-title">Equipo profesional y especializado</h4>
                             <div class="feature-content">
-                                <p>Aliquam sit amet mi eu libero fermentum bibendum pulvinar a turpis. Vestibulum quis feugiat risus. </p>
+                                <p>Centro médico galenos tiene en su posesion un equipo de médicos especialisados en diferentes areas de conocimiento, ademas de un equipo preparado para toda dolencia que nuestros pacientes puedan requerir</p>
                             </div>
                         </div>
                         <div class="feature feature-blurb-text">
                             <h4 class="feature-title">Tarifa y precios accesibles</h4>
                             <div class="feature-content">
-                                <p>Praesent eu sollicitudin nunc. Cras malesuada vel nisi consequat pretium. Integer auctor elementum nulla suscipit in.</p>
+                                <p>Nosotros nos preocupamos de tener un servicio al que nuestros pacientes puedan aceder y que nuestros pacientes puedan pagar</p>
                             </div>
                         </div>
                     </div>

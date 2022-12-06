@@ -54,11 +54,15 @@
                             <li><a class="nav-link" href={% url "team" %}>Doctores</a></li>
                             <li><a class="nav-link" href={% url "blog" %}>Blog</a></li>
                             <li><a class="nav-link" href={% url "contact" %}>Contactanos</a></li>
+                            {% if not user.is_authenticated %}
                                 <li><a class="nav-link" href={% url "login" %}>Ingresar</a></li>
                                 <li><a class="nav-link" href={% url "register" %}>Registrar</a></li>
+                            {% else %}
                                 <li><a class="nav-link" href={% url "appointment" %}>Programar citas</a></li>
                                 <li><a class="nav-link" href={% url "citas" %}>Mirar citas</a></li>
                                 <li><a class="nav-link" href={% url "cerrar" %}>Cerrar sesion</a></li>
+                            {% endif %}
+                            
                         </ul>
                     </div>
                 </div>
@@ -72,7 +76,7 @@
                     <div class="col-lg-12">
                         <div class="subscribe-inner text-center clearfix">
                             <h2>Suscribete</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p>para poder acceder a nuestros servicios por favor registrese</p>
                             <h2><a href={% url "register" %}>Registrate</a></h2>
                         </div>
                     </div>

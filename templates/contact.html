@@ -7,7 +7,7 @@
             <div class="col-lg-12">
                 <div class="title-box">
                     <h2>Contactanos</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                    <p>Centro médico Galenos estamos atentos a cualquier mensaje que el paciente desee darnos</p>
                 </div>
             </div>
         </div>
@@ -17,7 +17,11 @@
                   <form id="contactForm" method="post">
                     <div class="row">
                       {% csrf_token %}
-                      {{msj|crispy}}
+                      <div class="col-lg-4 col-xs-12"></div>
+                      <div class="col-lg-4 col-xs-12">
+                        {{msj|crispy}}
+                      </div>
+                      <div class="col-lg-4 col-xs-12"></div>
                       <div class="col-md-12">
                           <div class="submit-button text-center">
                               <button class="btn btn-common" id="submit" type="submit">Contactanos</button>
@@ -32,7 +36,7 @@
               
             <div class="col-lg-12 col-xs-12">
                 <div class="left-contact">
-                    <h2>Address</h2>
+                    <h2>Contactos</h2>
                     <div class="media cont-line">
                         <div class="media-left icon-b">
                             <i class="fa fa-location-arrow" aria-hidden="true"></i>

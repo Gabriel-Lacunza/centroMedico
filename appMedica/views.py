@@ -19,7 +19,6 @@ def appointment(request):
 
     if usuario.is_authenticated:
         citas = registroCitaForm()
-        print(request.user)
         if request.method == "POST":
             citas = registroCitaForm(request.POST)
             if citas.is_valid():
@@ -55,24 +54,6 @@ def services(request):
 def team(request):
     return render(request, "team.html", {})
 
-"""
-def login(request):
-    form = loginForm()
-    mesg = ""
-
-    if request.method == "POST":
-        if form.is_valid:
-            username = request.POST.get("username")
-            password = request.POST.get("password")
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect("home")
-            else:
-                mesg = "¡La cuenta o la password no son correctos!"
-    return render(request, "login.html", {"login": form, "mesg": mesg})
-"""
-
 def index(request):
     return render(request, "index.html")
 
@@ -82,9 +63,15 @@ def cerrar_sesion(request):
 
 def citas(request):
     usuario = request.user
+    cita = Cita.objects
+
+    if request.method == "POST":
+        if request.POST.get("eliminar"):
+            cita.get(id=request.POST["eliminar"]).delete()
 
     if usuario.is_authenticated:
         citas = Cita.objects.filter(pacienteCita= Perfil.objects.get(user=request.user))
         return render(request, "citas.html", {"citas": citas})
     else:
         return redirect("home")
+    
