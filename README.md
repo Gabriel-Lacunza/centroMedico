@@ -1,5 +1,3 @@
 # centroMedico
 
-instalar la librería crispy con el siguiente comando "pip install django-crispy-forms" antes de ejecutar programa
-para ejecutar programa usen el comando "python manage.py runserver"
-puede dar error no hacer el primer paso
+recordar tener python al día, para ejecutar el programa usar todos los comando en el orden presentados para evitar errores
