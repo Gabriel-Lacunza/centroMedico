@@ -1,0 +1,56 @@
+{% extends "indexsec.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="well-block">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <button class="btn btn-success btnwidth" type="submit">Guardar boleta</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <h1>Citas organizadas</h1>
+        {% if cb > 0 %}
+            <div class="table-responsive">
+                <table class="table table-primary">
+                    <thead>
+                        <tr>
+                            <th>Id boleta</th>
+                            <th scope="col">Paciente</th>
+                            <th scope="col">Medico</th>
+                            <th scope="col">Fecha y hora</th>
+                            <th>valor de la cita</th>
+                            <th>pago al medico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in boletas %}
+                            <tr class="">
+                                <td>{{i.id}} </td>
+                                <td scope="row">{{i.cita.pacienteCita.nombreUsuario}} {{i.cita.pacienteCita.apellidoUsuario}}</td>
+                                <td>{{i.cita.medicoCita.nombreUsuario}} {{i.cita.medicoCita.apellidoUsuario}}</td>
+                                <td>{{i.cita.fechaCita|date:'d-m-Y'}} a las {{i.cita.horaInicioCita}}</td>
+                                <td>{{i.valorDeLaCita}} </td>
+                                <td>{{i.comisionDelMedico}} </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <h2>No hay boletas hechas.</h2>
+        {% endif %}
+    </div>
+{% endblock %}

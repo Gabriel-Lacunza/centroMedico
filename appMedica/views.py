@@ -47,12 +47,15 @@ def gallery(request):
 def home(request):
     msj = contactanosForm()
     u = request.user
-    usuario = Perfil.objects.get(user = u)
     rol = Rol.objects
     
     if u.is_authenticated:
-        if usuario.rolUsuario == rol.get(nombreRol= "Secretaria"):
-            return redirect("sec/")
+        try:
+            usuario = Perfil.objects.get(user = u)
+            if usuario.rolUsuario == rol.get(nombreRol= "Secretaria"):
+                return redirect("sec/")
+        except:
+            pass
     return render(request, "home.html", {"msj": msj})
 
 def loginV(request):

@@ -44,20 +44,11 @@ class Medico(models.Model):
         return f"{self.nombreUsuario} {self.apellidoUsuario} ({self.rutUsuario}-{self.dvUsuario})"
 
 class Cita(models.Model):
-    fechaCita = models.DateTimeField(verbose_name="fecha de la cita")
+    fechaCita = models.DateField(verbose_name="fecha de la cita")
     horaInicioCita = models.TimeField(default=0, verbose_name="hora de la cita")
     duracionCita = models.IntegerField(default=0, verbose_name="duracion aproximada de la cita")
     pacienteCita = models.ForeignKey(Perfil, on_delete=models.DO_NOTHING, related_name="pacienteCita")
     medicoCita = models.ForeignKey(Medico, on_delete=models.DO_NOTHING, related_name="medicoCita", verbose_name="médico para la cita")
 
     def __str__(self) -> str:
-        return f"{self.fechaCita} - paciente: {self.pacienteCita} con medico: {self.medicoCita}"
-
-#borrar en un futuro
-
-class Boleta(models.Model):
-    idCitaBoleta = models.IntegerField()
-    fechaEmisionBoleta = models.DateTimeField(auto_now_add=True)
-    valorBrutoBoleta = models.IntegerField()
-    valorNetoBoleta = models.IntegerField()
-    comisionMedicaBoleta = models.IntegerField()
+        return f"{self.pacienteCita} (paciente) {self.medicoCita}(médico) - {self.fechaCita}"

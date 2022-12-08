@@ -20,6 +20,6 @@ from register import views as v
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("register/", v.register, name="register"),
-    path("", include("appMedica.urls")),
-    path('sec/', include("appSecretaria.urls"))
+    path("", include("appMedica.urls"), name="centroMedico"),
+    path('sec/', include("appSecretaria.urls"), name="appSecretaria")
 ]
