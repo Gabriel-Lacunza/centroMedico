@@ -1,0 +1,34 @@
+{% extends "indexMed.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+        <br>
+        <div class="col-4"></div>
+        <h1>Citas organizadas</h1>
+        {% if cc > 0 %}
+            <div class="table-responsive">
+                <table class="table table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">Paciente</th>
+                            <th scope="col">Rut</th>
+                            <th scope="col">Fecha y hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in citas %}
+                            <tr class="">
+                                <td scope="row">{{i.pacienteCita.nombreUsuario}} {{i.pacienteCita.apellidoUsuario}}</td>
+                                <td>{{i.pacienteCita.rutUsuario}}-{{i.pacienteCita.dvUsuario}}</td>
+                                <td>{{i.fechaCita|date:'d-m-Y'}} a las {{i.horaInicioCita}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <h2>No hay citas programadas.</h2>
+        {% endif %}
+    </div>
+{% endblock %}

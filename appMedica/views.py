@@ -54,6 +54,8 @@ def home(request):
             usuario = Perfil.objects.get(user = u)
             if usuario.rolUsuario == rol.get(nombreRol= "Secretaria"):
                 return redirect("sec/")
+            elif usuario.rolUsuario == rol.get(nombreRol= "Médico"):
+                return redirect("med/")
         except:
             pass
     return render(request, "home.html", {"msj": msj})
@@ -78,7 +80,9 @@ def loginV(request):
                         return redirect("home")
                     elif rol == Rol.objects.get(nombreRol="Secretaria"):
                         return redirect("sec/")
-                    
+                    elif rol == Rol.objects.get(nombreRol= "Médico"):
+                        return redirect("med/")
+                            
     return render(request, "login.html", {"login": loginvar})
 
 def services(request):

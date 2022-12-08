@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "appSecretaria.apps.AppsecretariaConfig",
     "register.apps.RegisterConfig",
     "crispy_forms",
+    "appMedicos.apps.AppmedicosConfig"
 ]
 
 MIDDLEWARE = [

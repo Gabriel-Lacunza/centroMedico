@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("register/", v.register, name="register"),
     path("", include("appMedica.urls"), name="centroMedico"),
-    path('sec/', include("appSecretaria.urls"), name="appSecretaria")
+    path('sec/', include("appSecretaria.urls"), name="appSecretaria"),
+    path('med/', include("appMedicos.urls"), name="appMedicos")
 ]

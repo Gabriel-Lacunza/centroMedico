@@ -1,0 +1,41 @@
+{% extends "indexMed.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-4"></div>
+        <h1>Avance mensual</h1>
+        {% if cb > 0 %}
+            <div class="table-responsive">
+                <table class="table table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">Paciente</th>
+                            <th scope="col">Fecha y hora</th>
+                            <th>Valor de la cita</th>
+                            <th>Comision del medico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in boletas %}
+                            <tr class="">
+                                <td scope="row">{{i.cita.pacienteCita.nombreUsuario}} {{i.cita.pacienteCita.apellidoUsuario}}</td>
+                                <td>{{i.cita.fechaCita|date:'d-m-Y'}} a las {{i.cita.horaInicioCita}}</td>
+                                <td>{{i.valorDeLaCita}}</td>
+                                <td>{{i.comisionDelMedico}}%</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <th> </th>
+                        <th> </th>
+                        <th>Total del avance:</th>
+                        <th>{{avance}} pesos</th>
+                    </tfoot>
+                </table>
+            </div>
+        {% else %}
+            <h2>No hay citas programadas.</h2>
+        {% endif %}
+    </div>
+{% endblock %}
