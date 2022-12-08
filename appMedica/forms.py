@@ -22,15 +22,16 @@ class registroUsuarioForm(UserCreationForm):
     email = forms.EmailField(max_length=40)
     class Meta:
         model = User 
-        fields = [
+        fields = (
             "rut",
             "dv",
             "nombre",
             "apellido",
             "direccion",
             "celular",
-            "email"
-        ]
+            "email",
+            "username"
+        )
 
 class loginForm(Form):
     nombreDeUsuario = forms.CharField(widget=forms.TextInput(), label="Nombre")
@@ -75,6 +76,8 @@ class contactanosForm(Form):
     telefonoCelular = forms.CharField(label="Numero de telefono")
     mensaje = forms.CharField(widget=forms.Textarea())
 
+
+#borar en un futuro
 class registroRol(ModelForm):
     class Meta:
         model = Rol

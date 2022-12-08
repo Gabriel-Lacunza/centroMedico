@@ -53,6 +53,8 @@ class Cita(models.Model):
     def __str__(self) -> str:
         return f"{self.fechaCita} - paciente: {self.pacienteCita} con medico: {self.medicoCita}"
 
+#borrar en un futuro
+
 class Boleta(models.Model):
     idCitaBoleta = models.IntegerField()
     fechaEmisionBoleta = models.DateTimeField(auto_now_add=True)

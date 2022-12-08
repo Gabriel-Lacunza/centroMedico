@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from .forms import *
 from .models import *
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.forms import AuthenticationForm
 from django.views.generic.edit import CreateView
 
 # Create your views here.
@@ -46,16 +46,43 @@ def gallery(request):
 
 def home(request):
     msj = contactanosForm()
+    u = request.user
+    usuario = Perfil.objects.get(user = u)
+    rol = Rol.objects
+    
+    if u.is_authenticated:
+        if usuario.rolUsuario == rol.get(nombreRol= "Secretaria"):
+            return redirect("sec/")
     return render(request, "home.html", {"msj": msj})
+
+def loginV(request):
+    loginvar = AuthenticationForm()
+
+    if request.method == "POST":
+        loginvar = AuthenticationForm(request, data=request.POST)
+
+        if loginvar.is_valid():
+            nombre = request.POST.get("username")
+            contrasenna = request.POST.get("password")
+            usuario = authenticate(request, username= nombre, password= contrasenna)
+            u = Perfil.objects.get(user = usuario).rolUsuario
+            rol = Rol.objects.get(nombreRol=u)
+
+            if usuario is not None:
+                if usuario.is_active:
+                    login(request, usuario)
+                    if rol == Rol.objects.get(nombreRol="Paciente"):
+                        return redirect("home")
+                    elif rol == Rol.objects.get(nombreRol="Secretaria"):
+                        return redirect("sec/")
+                    
+    return render(request, "login.html", {"login": loginvar})
 
 def services(request):
     return render(request, "services.html", {})
 
 def team(request):
     return render(request, "team.html", {})
-
-def index(request):
-    return render(request, "index.html")
 
 def cerrar_sesion(request):
     logout(request)

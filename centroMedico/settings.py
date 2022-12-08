@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "appMedica.apps.AppmedicaConfig",
+    "appSecretaria.apps.AppsecretariaConfig",
     "register.apps.RegisterConfig",
     "crispy_forms",
 ]

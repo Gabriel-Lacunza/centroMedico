@@ -55,7 +55,7 @@
                             <li><a class="nav-link" href={% url "blog" %}>Blog</a></li>
                             <li><a class="nav-link" href={% url "contact" %}>Contactanos</a></li>
                             {% if not user.is_authenticated %}
-                                <li><a class="nav-link" href={% url "login" %}>Ingresar</a></li>
+                                <li><a class="nav-link" href={% url "login1" %}>Ingresar</a></li>
                                 <li><a class="nav-link" href={% url "register" %}>Registrar</a></li>
                             {% else %}
                                 <li><a class="nav-link" href={% url "appointment" %}>Programar citas</a></li>

@@ -1,0 +1,54 @@
+{% extends "indexsec.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="well-block">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <button class="btn btn-success btnwidth" type="submit">Guardar cita</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <h1>Citas organizadas</h1>
+        {% if cc > 0 %}
+            <div class="table-responsive">
+                <table class="table table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">Paciente</th>
+                            <th scope="col">Rut</th>
+                            <th scope="col">Medico</th>
+                            <th scope="col">Fecha y hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in citas %}
+                            <tr class="">
+                                <td scope="row">{{i.pacienteCita.nombreUsuario}} {{i.pacienteCita.apellidoUsuario}}</td>
+                                <td>{{i.pacienteCita.rutUsuario}}-{{i.pacienteCita.dvUsuario}}</td>
+                                <td>{{i.medicoCita.nombreUsuario}} {{i.medicoCita.apellidoUsuario}}</td>
+                                <td>{{i.fechaCita|date:'d-m-Y'}} a las {{i.horaInicioCita}}</td>
+                                <td><a class="btn btn-info" href="{% url "citasSec" "editar" i.id %}">Editar</a></td>
+                                <td><a class="btn btn-danger" href="{% url "citasSec" "eliminar" i.id %}">Borrar</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <h2>No hay citas programadas.</h2>
+        {% endif %}
+    </div>
+{% endblock %}
