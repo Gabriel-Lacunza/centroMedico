@@ -70,6 +70,7 @@ def loginV(request):
             nombre = request.POST.get("username")
             contrasenna = request.POST.get("password")
             usuario = authenticate(request, username= nombre, password= contrasenna)
+            print(type(usuario))
             u = Perfil.objects.get(user = usuario).rolUsuario
             rol = Rol.objects.get(nombreRol=u)
 
